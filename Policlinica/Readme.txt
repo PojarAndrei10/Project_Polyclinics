@@ -1,7 +1,7 @@
-Cum se ruleaza:
-0. Daca se lucreaza local, se porneste conexiunea MySQL Workbench
-1. Se lanseaza Eclipse
-2. Se alege File -> Import -> General -> Existing Projects into Workspace -> Browse (Select root directory) calea catre folder
-3. Se alege policlinica (proiectul) -> src -> Demo.java -> right click Run as -> Java application
+How it runs:
+0. If working locally, MySQL Workbench connection is started
+1. Launch Eclipse
+2. Choose File -> Import -> General -> Existing Projects into Workspace -> Browse (Select root directory) path to folder
+3. Choose polyclinic (project) -> src -> Demo.java -> right click Run as -> Java application
 
-Modul de functionare al aplicatiei este evidentiat in documentatie.
+How the application works is highlighted in the documentation.
