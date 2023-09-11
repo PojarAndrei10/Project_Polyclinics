@@ -1,0 +1,53 @@
+LISTA PROCEDURI
+Echipa:Cioban Fabian-Remus si Pojar Andrei-Gabriel
+Grupa:30223
+
+1.MEDIC
+-modifica raport medical
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modifica_raport_medical`(id_raport int,nume_pacient varchar(50), prenume_pacient varchar(50),simptome mediumtext, diagnostic mediumtext, recomandari mediumtext, investigatii mediumtext, id_asistent int)
+BEGIN
+	UPDATE raport_medical SET nume_pacient=nume_pacient, prenume_pacient=prenume_pacient,simptome=simptome,diagnostic=diagnostic,recomandari=recomandari,investigatii=investigatii,id_asistent=id_asistent WHERE id_raport=id_raport;
+END
+
+2.RECEPTIONER
+-adauga programare
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adauga_programare`(dataProgramarii Date, ora Time, nume_pacient varchar(45), prenume_pacient varchar(45),id_medic int)
+BEGIN
+	-- DECLARE id_pacient int;
+    -- SELECT id_pacient FROM pacient WHERE nume=nume_pacient AND prenume=prenume_pacient INTO id_pacient;
+    -- if(id_pacient IS NULL) THEN 
+    INSERT INTO programare(id_programare,ora,zi,id_medic,nume_pacient,prenume_pacient) VALUES (0,ora,dataProgramarii,id_medic,nume_pacient,prenume_pacient);
+    -- else
+	-- INSERT INTO programare(id_programare,ora,zi,id_medic,id_pacient,nume_pacient,prenume_pacient) VALUES (0,ora,dataProgramarii,id_medic,id_pacient,nume_pacient,prenume_pacient);
+    -- END IF;
+END
+
+3.INSPECTOR RESURSE UMANE
+-adauga concediu
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adauga_concediu`(data_incepere date, data_incheiere date, id_utilizator int)
+BEGIN
+	INSERT INTO concediu VALUES (0,data_incepere, data_incheiere,id_utilizator);
+END
+
+4.EXPERT FINANCIAR CONTABIL
+-adauga salariu
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adauga_salariu`(nr_ore int, luna int, an int, id_utilizator int)
+BEGIN
+	INSERT INTO salariu(nr_ore,luna,an,id_utilizator) VALUES (nr_ore,luna,an,id_utilizator);
+END
+
+5.ASISTENT MEDICAL
+-adauga raport medical
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adauga_raport_medical`(nume_pacient varchar(50), prenume_pacient varchar(50), nume_medic_realizator varchar(50), prenume_medic_realizator varchar(50),
+data_consultatiei Date, simptome mediumtext, diagnostic mediumtext, recomandari mediumtext, investigatii mediumtext, id_medic int, id_asistent int)
+BEGIN
+	INSERT INTO raport_medical(id_raport, nume_pacient, prenume_pacient, nume_medic_realizator, prenume_medic_realizator, 
+							   data_consultatiei, istoric, simptome, diagnostic, recomandari, investigatii, parafat, id_medic, id_asistent)
+    VALUES (0,nume_pacient, prenume_pacient, nume_medic_realizator, prenume_medic_realizator, 
+			data_consultatiei, 'Nu are', simptome, diagnostic, recomandari, investigatii, parafat, id_medic, id_asistent);
+END
